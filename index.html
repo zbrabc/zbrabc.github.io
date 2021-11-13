@@ -180,40 +180,9 @@
 <li>数学下标与斜体冲突时在下划线与公式之间插入空格</li>
 </ul>
 <h2 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h2><p>先从二项分布开始。</p>
-<p>做 $n$ 次独立重复试验，设成功率为 $p$ ，则时间发生 $k$ 次的概率为：<br>$$<br>P(X=k)=C_n^kp^{n-k}(1-p)^k \tag{1}<br>$$</p>
-<h2 id="泊松分布"><a href="#泊松分布" class="headerlink" title="泊松分布"></a>泊松分布</h2><p>假设事件发生足够平稳，当 $n$ 很大而 $p$ 很小时，二项分布接近泊松分布。</p>
-<p><strong>先引入“泊松过程”</strong></p>
-<p>做 $n$ 次独立重复实验，设成功率为 $p$ ，则成功次数的期望为 $np$ 。</p>
-<p>单位时间内成功次数为 $\lambda$ ，在时间 $t$ 内，有：</p>
-<p>$$<br> np=\lambda t\tag{2}<br>$$<br>$$<br>p=\frac{\lambda t}{n}\tag{3}<br>$$<br>则有：<br>$$<br>P(X=k)=C_n^kp^k(1-p)^{n-k}<br>\\<br>=\frac{n!}{k!(n-k)!}(\frac{\lambda t}{n})^{k}(1-\frac{\lambda t}{n})^{n-k}<br>\\<br>=\frac{(\lambda t)^k}{k!}[1\times(1-\frac{1}{n})\cdots(1-\frac{k-1}{n})](1-\frac{\lambda t}{n})^{n-k}\tag{4}<br>$$<br>可以看出，当 $n\rightarrow\infty$ 时，<br>$$<br>[1\times(1-\frac{1}{n})\cdots(1-\frac{k-1}{n})]\rightarrow1<br>$$<br>$$<br>(1-\frac{\lambda t}{n})^{n-k}=(1-\frac{\lambda t}{n})^n(1-\frac{\lambda t}{n})^k\rightarrow e^{-\lambda t}\times1=e^{-\lambda t}<br>$$<br>故有：<br>$$<br>\lim_{n\rightarrow \infty}C_n^kp^k(1-p)^{n-k}=\frac{(\lambda t)^k}{k!}e^{-\lambda t}\tag{5}<br>$$</p>
-<p>因此，当 $n$ 很大而 $p$ 很小时，</p>
-<p>在时间 $t$ 内事件发生 $k$ 次的概率 $P(X=k)$ 近似于 $\frac{(\lambda t)^k}{k!}e^{-\lambda t}$</p>
-<p>这就是泊松过程。</p>
-<p>注意，它衡量的是离散的随机变量。</p>
-<p>特别地，当t=1时，即可推出泊松分布：<br>$$<br>P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}\tag{6}<br>$$</p>
-<p>它衡量的时单位时间内事件发生k次的概率。</p>
-<h2 id="指数分布"><a href="#指数分布" class="headerlink" title="指数分布"></a>指数分布</h2><p>引入泊松过程，即为泊松分布加上了时间 $t$，是为了更直观地推导指数分布。</p>
-<p>在泊松过程的基础上，<br>指数分布衡量的是等待事件发生一次的时间 $t$。</p>
-<p>考察其分布函数：</p>
-<p>$$<br>P(X\le t)=1-P(x&gt;t)\tag{7}<br>$$</p>
-<p>显然 $P(X&gt;t)$ 表示时间在时间 $t$ 内没有发生，故有：<br>$$<br>P(X&gt;t)=\lim_{n\rightarrow \infty}C_n^0p^0(1-p)^n=e^{-\lambda t} \tag{8}<br>$$<br>因此，指数分布的分布函数为：<br>$$<br>P(X\le t)=1-P(x&gt;t)=1-e^{-\lambda t}\tag{9}<br>$$</p>
-<p>注意 $t&gt;0$ ，不难求出其概率密度：<br>$$<br>f(x)=\begin{cases}\lambda e^{-\lambda x},&amp;if \quad x&gt;0 \\0, &amp;if \quad else\end{cases}\tag{10}<br>$$</p>
-<h2 id="Gamma-分布"><a href="#Gamma-分布" class="headerlink" title="$\Gamma $分布"></a>$\Gamma $分布</h2><p>$\Gamma$函数：<br>$$<br>\Gamma(\alpha)=\int_0^{+\infty}x^{\alpha-1}e^{-x}dx\qquad(\alpha&gt;0)\tag{11}<br>$$<br>由分部积分易知：<br>$$<br>\Gamma (\alpha)=(\alpha-1)\Gamma(\alpha-1)=\cdots=(\alpha-1)!\Gamma(1)=(\alpha-1)!\tag{12}<br>$$<br>先给出 $\Gamma$ 分布的密度函数：<br>$$<br>P(x)=\begin{cases}\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha -1}e^{-\lambda x},&amp;if\quad x\ge 0 \\0, &amp;if\quad x&lt;0\end{cases}\tag{13}<br>$$<br>$\Gamma$ 分布与指数分布有着类似之处。</p>
-<p>指数分布预测的是等待事件发生一次的时间 $t$。</p>
-<p>$\Gamma$分布预测的是等待事件发生 $\alpha$ 次的时间。</p>
-<p>因此，它的推导同指数分布类似。<br>$$<br>P(x\le t)=1-P(x&gt;t) \\=1-\sum_{i=0}^{\alpha-1} \frac{(\lambda t)^i}{i!}e^{-\lambda t}\tag{14}<br>$$<br>进一步推导比较困难，我们换一种方式继续推进。</p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34866983/answer/1348524733">👉参考资料来源</a></p>
-<hr>
-<p>$$<br>\int_t^{+\infty}\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha-1}e^{-\lambda x}dx\\=\frac{\lambda^\alpha}{\Gamma(\alpha)}\int_t^{+\infty}x^{\alpha-1}e^{-\lambda x}dx\\=-\frac{\lambda^{\alpha-1}}{\Gamma(\alpha)}[\left.(x^{\alpha-1}e^{-\lambda x})\right.|_ {t}^{+\infty}-\int _{t}^{+\infty}(\alpha-1)x^{\alpha-2}e^{-\lambda x}dx]\\=\frac{(\lambda t)^{\alpha-1}e^{-\lambda t}}{\Gamma(\alpha)}+\int_t^{\infty}\frac{\lambda}{\Gamma(\alpha-1)}(\lambda x)^{\alpha-2}e^{-\lambda x}dx\\=\frac{(\lambda t)^{\alpha-1}}{(\alpha-1)!}e^{-\lambda t}+\int_t^{\infty}\frac{\lambda}{\Gamma(\alpha-1)}(\lambda x)^{\alpha-2}d^{-\lambda x}dx \tag{15}<br>$$<br>稍作变换可知：</p>
-<p>$$<br>\frac{(\lambda t)^{\alpha-1}}{(\alpha-1)!}e^{-\lambda t}<br>\\<br>=\int_t^{+\infty}\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha -1}e^{-\lambda x}dx-\int_t^{+\infty}\frac{\lambda}{\Gamma(\alpha-1)}(\lambda x)^{\alpha -2}e^{-\lambda x}dx\tag{16}<br>$$</p>
-<p>通过这种特殊的方式我们可以知道 $\sum_{i=0}^{\alpha-1} \frac{(\lambda t)^i}{i!}e^{-\lambda t}$ 的解。</p>
-<hr>
-<p>累加求和，再带入(14)式<br>$$<br>P(x\le t)=1-\int_t^{+\infty}\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha -1}e^{-\lambda x}dx<br>\\<br>=(\int_{-\infty}^{+\infty}-\int_{t}^{+\infty})(\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha -1}e^{-\lambda x}dx\tag{17})<br>\\<br>=\int_{-\infty}^{t}\frac{\lambda}{\Gamma(\alpha)}(\lambda x)^{\alpha -1}e^{-\lambda x}dx<br>$$</p>
-<p>求导可得 $\Gamma$ 分布的密度函数。</p>
-<h2 id="重新回顾泊松分布、指数分布和-Gamma-分布的含义"><a href="#重新回顾泊松分布、指数分布和-Gamma-分布的含义" class="headerlink" title="重新回顾泊松分布、指数分布和 $\Gamma$ 分布的含义"></a>重新回顾泊松分布、指数分布和 $\Gamma$ 分布的含义</h2><p>泊松分布衡量的是单位事件内事件发生 $k$ 次的概率。</p>
-<p>指数分布预测的是等待事件发生一次的时间 $t$。</p>
-<p>$\Gamma$分布预测的是等待事件发生 $\alpha$ 次的时间 $t$。</p>
-
+        
+          <a class="article-more-a" href="/2021/11/06/%E4%BC%BD%E9%A9%AC%E5%88%86%E5%B8%83/#more">more >></a>
+        
       
 
       
